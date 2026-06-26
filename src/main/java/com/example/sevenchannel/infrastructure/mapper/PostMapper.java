@@ -1,0 +1,5 @@
+package com.example.sevenchannel.infrastructure.mapper;
+
+public class PostMapper {
+
+}
