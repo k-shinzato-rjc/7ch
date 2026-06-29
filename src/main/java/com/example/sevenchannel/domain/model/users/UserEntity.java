@@ -1,6 +1,6 @@
 package com.example.sevenchannel.domain.model.users;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import lombok.Data;
 
@@ -21,7 +21,7 @@ public class UserEntity {
 	private String pwdHash;
 	
 	// 登録日
-	private LocalDateTime createdAt;
+	private OffsetDateTime createdAt;
 	
 	/**
 	 * Entity → Dto 変換

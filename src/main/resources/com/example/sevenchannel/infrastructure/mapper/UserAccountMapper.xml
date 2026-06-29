@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.sevenchannel.infrastructure.mapper.UserAccountMapper">
+	<select id="findById" parameterType="string" resultType="com.example.sevenchannel.domain.model.users.UserEntity">
+		SELECT
+			id,
+			username,
+			pwd_hash as pwdHash,
+			created_at as createdAt 
+		FROM users
+		WHERE id = #{id}
+	</select>
+</mapper>
