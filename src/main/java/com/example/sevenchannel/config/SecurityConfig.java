@@ -29,8 +29,9 @@ public class SecurityConfig {
 		http
 		.authorizeHttpRequests(auth -> auth
 			.requestMatchers("/login").permitAll()
-			.requestMatchers("/home").permitAll()
+			.requestMatchers("/logout").permitAll()
 			.requestMatchers("/regist").permitAll()
+			.requestMatchers("/css/**").permitAll()
 			.anyRequest().authenticated()
 		)
 		// ログイン画面・ログイン成功・失敗時のリクエスト
@@ -38,7 +39,7 @@ public class SecurityConfig {
 			.loginPage("/login")
 			.usernameParameter("id")
 			.passwordParameter("pwdHash")
-			.defaultSuccessUrl("/home")
+			.defaultSuccessUrl("/boards",true)
 			.failureUrl("/login?error=true")
 			.permitAll()
 		)

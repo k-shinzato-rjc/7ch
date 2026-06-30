@@ -1,1 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.sevenchannel.infrastructure.mapper.PostMapper">
+	<select id="findById" parameterType="int" resultType="com.example.sevenchannel.domain.model.posts.PostEntity">
+		SELECT 
+			id
+			,thread_id as threadId
+			,post_num as postNum
+			,user_id as userId
+			,author_name as authorName
+			,content
+			,ip_address as ipAddress
+			,created_at as createdAt
+		FROM posts
+		WHERE thread_id = #{threadId}
+	</select>
+	<insert id="save" parameterType="com.example.sevenchannel.domain.model.posts.PostEntity">
+		INSERT INTO posts (thread_id, post_num, user_id, author_name,content, ip_address, created_at)
+		VALUES (#{threadId},#{postNum},#{userId},#{authorName},#{content},#{ipAddress},#{createdAt})
+	</insert>
+</mapper>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>7ちゃんねる</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>7ちゃんねる</h1>
+            <div class="user-info">
+                ログイン中：<span th:text="${#authentication.name}"></span>
+                <form th:action="@{/logout}" method="post" style="display:inline;">
+                    <button type="submit">ログアウト</button>
+                </form>
+            </div>
+        </header>
+
+        <section class="board-list">
+            <h2>【板一覧】</h2>
+            <ul>
+                <li th:each="board : ${boards}">
+                    <a th:href="@{/threads(boardId=${board.id})}" th:text="${board.name}"></a>
+                </li>
+            </ul>
+            <a th:href="@{/create/board}">+ 新しい板を申請</a>
+        </section>
+
+        <section class="thread-list" th:if="${threads}">
+            <h2>- スレッド一覧</h2>
+            <div class="new-thread-btn">
+                <a th:href="@{/create/thread}">★新規スレッドを作成する</a>
+            </div>
+            <ol>
+                <li th:each="thread : ${threads}">
+                    <a th:href="@{/posts(threadId=${thread.id})}" th:text="${thread.title}"></a>
+                    <span class="post-count" th:text="'（' + ${thread.postCount} + '）'"></span>
+                </li>
+            </ol>
+        </section>
+    </div>
+</body>
+</html>

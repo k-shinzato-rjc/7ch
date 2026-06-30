@@ -1,7 +1,11 @@
 package com.example.sevenchannel.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.sevenchannel.domain.model.users.UserForm;
 
 /**
  * ログインコントローラー
@@ -16,24 +20,14 @@ public class LoginController {
 	 */
 	@GetMapping("/login")
 	public String loginView() {
-		System.out.println("aaaaa");
 		return "login";
-	}
-	
-	/**
-	 * ホーム画面へ遷移
-	 * @return home.html
-	 */
-	@GetMapping("/home")
-	public String home() {
-		return "home";
 	}
 	
 	/**
 	 * ログアウト画面へ遷移
 	 * @return logout.html
 	 */
-	@GetMapping("/logout")
+	@PostMapping("/logout")
 	public String logout() {
 		return "logout";
 	}
@@ -45,5 +39,17 @@ public class LoginController {
 	@GetMapping("/error")
 	public String error() {
 		return "error";
+	}
+	
+	/**
+	 * ログイン画面下部の新規登録リンクにアクセス
+	 * 空のUserFormをViewへ渡し、regist.htmlへ遷移
+	 * @param model
+	 * @return regist.html
+	 */
+	@GetMapping("/regist")
+	public String regist(Model model) {
+		model.addAttribute("form", new UserForm());
+		return "regist";
 	}
 }

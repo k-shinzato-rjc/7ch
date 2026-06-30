@@ -1,20 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>ログイン画面</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>ログイン - 7ちゃんねる</title>
 </head>
 <body>
-	<h1>ログイン</h1><br/>
-	<div th:if="${param.error}">メールアドレスまたはパスワードが正しくありません。</div>
-	<div th:if="${param.logout}">ログアウトしました。</div><br>
-	<form th:action="@{/login}" method="post">
-		<label for="id">ID</label><br>
-		<input type="text" id="id" name="id" required><br><br>
-		<label for="pwdHash">パスワード</label><br>
-		<input type="password" id="pwdHash" name="pwdHash" required><br>
-		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-		<button type="submit">ログイン</button>
-	</form>
+    <div class="container login-page">
+        <h1>ログイン</h1>
+        
+        <div class="message">
+            <div th:if="${success}" th:text="${success}"></div>
+            <div th:if="${param.error}" style="color: red;">メールアドレスまたはパスワードが正しくありません。</div>
+            <div th:if="${param.logout}">ログアウトしました。</div>
+        </div>
+
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="id">ID</label><br>
+                <input type="text" id="id" name="id" required>
+            </div>
+            <div class="form-group">
+                <label for="pwdHash">パスワード</label><br>
+                <input type="password" id="pwdHash" name="pwdHash" required>
+            </div>
+            
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <button type="submit">ログイン</button>
+        </form>
+
+        <div class="register-link">
+            <a th:href="@{/regist}">新規登録はこちら</a>
+        </div>
+    </div>
 </body>
 </html>

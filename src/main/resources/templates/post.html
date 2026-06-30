@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>スレッド詳細 - 7ちゃんねる</title>
+</head>
+<body>
+    <div class="container thread-page">
+        <div class="nav">
+            <a th:href="@{/boards}">≪ 掲示板一覧へ戻る</a> | 
+            <a th:href="@{/logout}">ログアウト</a>
+        </div>
+
+        <div th:if="${posts}" class="post-list">
+            <div th:each="post, iterStat : ${posts}" th:object="${post}" class="post-item">
+                <div class="post-header">
+                    <span th:text="${iterStat.count}">1</span> ：<span class="name" th:text="*{authorName} ?: '名無しさん'"></span> ：<span th:text="*{createdAt}"></span> ID:<span th:text="*{userId} ?: '匿名'"></span>
+                </div>
+                <div class="post-content" th:text="*{content}"></div>
+            </div>
+        </div>
+
+        <hr>
+
+        <form th:action="@{/post/upload}" method="post" th:object="${form}" class="post-form">
+            <h2>書き込む</h2>
+            <input type="hidden" th:field="*{threadId}">
+            <input type="hidden" name="userId" th:value="${#authentication.name}">
+            
+            <div class="form-group">
+                <label>名前：</label>
+                <input type="text" th:field="*{authorName}" placeholder="名無しさん">
+            </div>
+            <div class="form-group">
+                <textarea th:field="*{content}" rows="5" cols="60" placeholder="ここに書き込み内容を入力します。"></textarea>
+            </div>
+            <button type="submit">書き込む</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+body {
+    background-color: #efefef;
+    font-family: "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+    font-size: 16px;
+    line-height: 1.2;
+    padding: 20px;
+}
+
+.thread {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.post {
+    margin-bottom: 10px;
+}
+
+.post-header {
+    color: #339933; /* 投稿者名などの色 */
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+
+.number {
+    font-weight: bold;
+}
+
+.post-content {
+    color: #000;
+    margin-bottom: 10px;
+    padding-left: 20px;
+}
+
+/* 引用のスタイル */
+.post-content a {
+    color: #0000ff;
+    text-decoration: none;
+}

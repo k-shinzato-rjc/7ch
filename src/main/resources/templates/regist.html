@@ -1,19 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>登録画面</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>新規登録 - 7ちゃんねる</title>
 </head>
 <body>
-	<h1>ユーザー登録</h1>
-	<form th:action="@{/regist}" method="post">
-		<label for="id">ID</label>
-		<input type="text" id="id" name="id"><br>
-		<label for="pwdHash">パスワード</label>
-		<input type="password" id="pwdHash" name="pwdHash"><br>
-		<label for="username">ユーザー名</label>
-		<input type="text" id="username" name="username"><br>
-		<button type="submit">登録</button>
-	</form>
+    <div class="container regist-page">
+        <h1>ユーザー登録</h1>
+        
+        <div th:if="${error}" class="error-msg" th:text="${error}"></div>
+        
+        <form th:action="@{/regist}" method="post" th:object="${form}">
+            <div class="form-group">
+                <label for="id">ID：</label><br>
+                <input type="text" th:field="*{id}" required>
+            </div>
+            <div class="form-group">
+                <label for="pwdHash">パスワード：</label><br>
+                <input type="password" th:field="*{pwdHash}" required>
+            </div>
+            <div class="form-group">
+                <label for="username">ユーザー名：</label><br>
+                <input type="text" th:field="*{username}" required>
+            </div>
+            <button type="submit">登録する</button>
+        </form>
+
+        <div class="nav-link">
+            <a th:href="@{/login}">≪ ログイン画面へ戻る</a>
+        </div>
+    </div>
 </body>
 </html>

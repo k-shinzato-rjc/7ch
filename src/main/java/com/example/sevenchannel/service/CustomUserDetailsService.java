@@ -41,7 +41,6 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("ユーザーが見つかりません：" + id);
 		}
 		
-		 // ★このデバッグログを1行追加してください
 	    System.out.println("【デバッグ】DBから取得したパスワードハッシュ: " + userEntity.getPwdHash());
 		
 		return new CustomUserDetails(userEntity);

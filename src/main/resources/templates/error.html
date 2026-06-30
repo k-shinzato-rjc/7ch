@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>エラー画面</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>エラーが発生しました</title>
 </head>
 <body>
-	<h1>エラー</h1>
+    <div class="container error-page">
+        <h1>エラー</h1>
+        <p>申し訳ありません。予期せぬエラーが発生しました。</p>
+        <div class="error-link">
+            <a th:href="@{/login}">＞ ログイン画面へ戻る</a>
+        </div>
+    </div>
 </body>
 </html>

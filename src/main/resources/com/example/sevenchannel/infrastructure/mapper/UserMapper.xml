@@ -8,6 +8,6 @@
 	</select>
 	<insert id="save" parameterType="com.example.sevenchannel.domain.model.users.UserEntity">
 		INSERT INTO users(id,username,pwd_hash,created_at)
-		VALUES(#{id},#{username},#{pwdHash},#{createdAt})
+		VALUES(#{id},#{username},#{pwdHash},NOW())
 	</insert>
 </mapper>
